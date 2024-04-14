@@ -107,7 +107,7 @@ function OrderPizza() {
             <p>Sipariş Toplamı</p>
             <p>Seçimler</p> <p>25.00tl</p>
             <p>Toplam</p> <p>110.50tl</p>
-            <Link>SİPARİŞ VER</Link>{" "}
+            <Link to="/OrderSuccess">SİPARİŞ VER</Link>{" "}
           </div>
         </div>
       </div>

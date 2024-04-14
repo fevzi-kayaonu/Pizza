@@ -1,0 +1,23 @@
+.success {
+  background-color: #ce2829;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+}
+
+.success img {
+  position: absolute;
+  top: 10%;
+  left: calc((100%-363px) / 2);
+}
+
+.success p {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 100px;
+}
