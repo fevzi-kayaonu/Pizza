@@ -1,7 +1,7 @@
 function OrderSuccess() {
   return (
     <>
-      <div> OrderSuccess</div>
+      <div>OrderSuccess</div>
     </>
   );
 }

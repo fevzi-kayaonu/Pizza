@@ -1,9 +1,6 @@
 import { Switch, Route } from "react-router-dom";
-
 import Home from "./components/Home";
-
 import OrderPizza from "./components/OrderPizza";
-
 import OrderSuccess from "./components/OrderSuccess";
 
 function App() {
