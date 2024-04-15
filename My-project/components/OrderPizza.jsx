@@ -1,6 +1,7 @@
 import { Form, FormGroup, Input, Label } from "reactstrap";
 import "./orderpizza.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const malzemeler = [
   "Pepperoni",
@@ -20,7 +21,56 @@ const malzemeler = [
 ];
 
 function OrderPizza() {
-  let count = 0;
+  const [count, setCount] = useState(0);
+  const [secimler, setSecimler] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [size, setSize] = useState("");
+  const [secilenMalzemeler, setSecilenMalzemeler] = useState([]);
+
+  const onChange = (type) => {
+    type == "Arttır"
+      ? setCount(count + 1)
+      : type == "Azalt" && count > 0
+      ? setCount(count - 1)
+      : null;
+  };
+
+  const onChangeSecimler = (e) => {
+    const malzeme = e.target.value;
+
+    if (!secilenMalzemeler.includes(malzeme))
+      setSecilenMalzemeler([...secilenMalzemeler, malzeme]);
+    else {
+      const newMalzeme = [...secilenMalzemeler];
+      newMalzeme.splice(newMalzeme.indexOf(malzeme), 1);
+      setSecilenMalzemeler(newMalzeme);
+    }
+  };
+
+  console.log(secilenMalzemeler);
+  const onChangeSize = (e) => {
+    const newVal = e.target.value;
+    setSize(newVal);
+  };
+
+  useEffect(() => {
+    const sizeMoney =
+      size == "Küçük"
+        ? 85.5
+        : size == "Orta"
+        ? 105.5
+        : size == "Büyük"
+        ? 125.5
+        : 0;
+    //setSecimler(secilenMalzemeler.length*5);
+    setTotal(sizeMoney * count + secimler);
+  }, [secimler, size, count]);
+
+  useEffect(() => {
+    setSecimler(secilenMalzemeler.length * 5);
+  }, [secilenMalzemeler]);
+
+  // useEffect( () => {  },[size])
   return (
     <>
       <div className="all">
@@ -40,7 +90,7 @@ function OrderPizza() {
           <div className="container-orderpizza">
             <h2>Position Absolute Acı Pizza</h2>
             <div className="rakam">
-              <p className="rakam-p">85.50$</p>
+              <p className="rakam-p">85.50₺</p>
               <div className="rakam2">
                 <p>4.9</p>
                 <p>(200)</p>
@@ -61,14 +111,30 @@ function OrderPizza() {
                   Boyut Seç <span>*</span>
                 </Label>
                 <FormGroup check>
-                  <Input name="radio1" type="radio" />{" "}
+                  <Input
+                    name="radio1"
+                    type="radio"
+                    value="Küçük"
+                    onChange={onChangeSize}
+                  />{" "}
                   <Label check>Küçük</Label>
                 </FormGroup>
                 <FormGroup check>
-                  <Input name="radio1" type="radio" /> <Label check>Orta</Label>
+                  <Input
+                    name="radio1"
+                    type="radio"
+                    value="Orta"
+                    onChange={onChangeSize}
+                  />{" "}
+                  <Label check>Orta</Label>
                 </FormGroup>
                 <FormGroup check>
-                  <Input name="radio1" type="radio" />{" "}
+                  <Input
+                    name="radio1"
+                    type="radio"
+                    value="Büyük"
+                    onChange={onChangeSize}
+                  />{" "}
                   <Label check>Büyük</Label>
                 </FormGroup>
               </FormGroup>
@@ -91,7 +157,12 @@ function OrderPizza() {
                 {malzemeler.map((malzeme, index) => {
                   return (
                     <FormGroup check inline>
-                      <Input type="checkbox" />
+                      <Input
+                        type="checkbox"
+                        onChange={onChangeSecimler}
+                        value={malzeme}
+                        key={index}
+                      />
                       <Label check>{malzeme}</Label>
                     </FormGroup>
                   );
@@ -110,17 +181,19 @@ function OrderPizza() {
             <hr />
             <div className="pizza-onay">
               <div className="sayac">
-                <button>-</button> <p>{count}</p> <button>+</button>
+                <button onClick={() => onChange("Azalt")}>-</button>{" "}
+                <p>{count}</p>{" "}
+                <button onClick={() => onChange("Arttır")}>+</button>
               </div>
               <div className="sipariş-card">
                 {" "}
                 <div className="sipariş-genel">
                   <h5>Sipariş Toplamı</h5>
                   <div className="secimler">
-                    <p>Seçimler</p> <p>25.00tl</p>
+                    <p>Seçimler</p> <p>{secimler}₺</p>
                   </div>
                   <div className="toplam">
-                    <p>Toplam</p> <p>110.50tl</p>
+                    <p>Toplam</p> <p>{total}₺</p>
                   </div>
                 </div>
                 <div className="link-pizza">
