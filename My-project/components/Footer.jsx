@@ -1,16 +1,18 @@
 import "./footer.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 export default function Footer() {
   return (
-    <footer>
+    <footer className="footer">
       <div className="footer-ust">
         <div className="footer-container">
-          <div className="address">
+          <div className="address-container">
             <img
+              className="footer-logo"
               src="../../Assets/mile2-aseets/footer/logo-footer.svg"
               alt="logo-footer.png"
             />
-            <address>
+            <address className="address">
               <div>
                 <img
                   src="../../Assets/mile2-aseets/footer/icons/icon-1.png"
@@ -36,46 +38,50 @@ export default function Footer() {
           </div>
           <div className="footer-menuler">
             <h2>Sıcacık Menuler</h2>
-            <p>Terminal Pizza</p>
-            <p>5 Kişilik Hackathlon Pizza</p>
-            <p>useEffect Tavuklu Pizza</p>
-            <p>Beyaz Console Frosty</p>
-            <p>Testler Geçti Mutlu Burger</p>
-            <p>Position Absolute Acı Burger</p>
+            <div>
+              <p>Terminal Pizza</p>
+              <p>5 Kişilik Hackathlon Pizza</p>
+              <p>useEffect Tavuklu Pizza</p>
+              <p>Beyaz Console Frosty</p>
+              <p>Testler Geçti Mutlu Burger</p>
+              <p>Position Absolute Acı Burger</p>
+            </div>
           </div>
         </div>
         <div className="footer-photos">
           <h2>Instagram</h2>
-          <img
-            src="../../Assets/mile2-aseets/footer/insta/li-0.png"
-            alt="img-0"
-          />
-          <img
-            src="../../Assets/mile2-aseets/footer/insta/li-1.png"
-            alt="img-1"
-          />
-          <img
-            src="../../Assets/mile2-aseets/footer/insta/li-2.png"
-            alt="img-2"
-          />
-          <img
-            src="../../Assets/mile2-aseets/footer/insta/li-3.png"
-            alt="img-3"
-          />
-          <img
-            src="../../Assets/mile2-aseets/footer/insta/li-4.png"
-            alt="img-4"
-          />
-          <img
-            src="../../Assets/mile2-aseets/footer/insta/li-5.png"
-            alt="img-5"
-          />
+          <div>
+            <img
+              src="../../Assets/mile2-aseets/footer/insta/li-0.png"
+              alt="img-0"
+            />
+            <img
+              src="../../Assets/mile2-aseets/footer/insta/li-1.png"
+              alt="img-1"
+            />
+            <img
+              src="../../Assets/mile2-aseets/footer/insta/li-2.png"
+              alt="img-2"
+            />
+            <img
+              src="../../Assets/mile2-aseets/footer/insta/li-3.png"
+              alt="img-3"
+            />
+            <img
+              src="../../Assets/mile2-aseets/footer/insta/li-4.png"
+              alt="img-4"
+            />
+            <img
+              src="../../Assets/mile2-aseets/footer/insta/li-5.png"
+              alt="img-5"
+            />
+          </div>
         </div>
-        <hr />
       </div>
+      <hr />
       <div className="footer-alt">
-        <p>Teknolojik Yemekler</p>
-        <i>Twitter</i>
+        <p>© 2023 Teknolojik Yemekler</p>
+        <FontAwesomeIcon icon={faTwitter} />
       </div>
     </footer>
   );
