@@ -1,3 +1,133 @@
+.all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.all header {
+  background-color: #ce2829;
+  width: 100%;
+  min-width: 390px;
+  padding: 5%;
+  text-align: center;
+}
+
+.select-hamur {
+  background-color: antiquewhite;
+}
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.container-orderpizza {
+  max-width: 581px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.rakam {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.rakam p {
+  margin: 0;
+}
+.rakam2 {
+  display: flex;
+  gap: 100px;
+}
+
+.boyut-hamur {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 100px;
+  flex-wrap: wrap;
+}
+
+.pizza-onay {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.sayac {
+  display: flex;
+}
+
+.sayac button {
+  width: 50px;
+  height: 50px;
+  background-color: #fdc913;
+  font-weight: 600;
+  border-color: #fdc913;
+  font-size: 1.2rem;
+}
+
+.sayac button:nth-of-type(1) {
+  border-radius: 10px 0 0 10px;
+}
+
+.sayac button:nth-of-type(2) {
+  border-radius: 0 10px 10px 0px;
+}
+.sayac p {
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  padding-top: 10px;
+  border: #5f5f5f 1px solid;
+  font-weight: 600;
+}
+
+.sipariş-card {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  align-content: center;
+}
+.sipariş-genel {
+  padding: 30px;
+  border: #5f5f5f 0.5px solid;
+  border-radius: 10px;
+}
+.link-pizza {
+  text-align: center;
+  background-color: #fdc913;
+  border-radius: 10px;
+  width: 100%;
+  padding: 15px;
+}
+.link-pizza a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+.secimler,
+.toplam {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.secimler {
+  color: #5f5f5f;
+  padding-top: 15px;
+}
+
+.toplam {
+  color: #ce2829;
+}
+
+.rakam-p {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+/*
 .orderPizza {
   background-color: #ce2829;
   padding: 5%;
@@ -13,3 +143,4 @@
 .container {
   max-width: 300px;
 }
+*/
