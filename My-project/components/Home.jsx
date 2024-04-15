@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import "./home.css";
+import Footer from "./Footer";
 
 function Home() {
   return (
     <>
-      <div className="home">
+      <header className="home">
         <div className="homeContainer">
           <img
             src="../../Assets/mile1-assets/logo.svg"
@@ -16,7 +17,9 @@ function Home() {
             Acıktım
           </Link>
         </div>
-      </div>
+      </header>
+      <div></div>
+      <Footer></Footer>
     </>
   );
 }
