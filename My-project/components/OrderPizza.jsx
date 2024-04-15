@@ -2,6 +2,23 @@ import { Form, FormGroup, Input, Label } from "reactstrap";
 import "./orderpizza.css";
 import { Link } from "react-router-dom";
 
+const malzemeler = [
+  "Pepperoni",
+  "Domates",
+  "Biber",
+  "Sosis",
+  "Mısır",
+  "Sucuk",
+  "Kanada Jambonu",
+  "Sucuk",
+  "Ananas",
+  "Tavuk Izgara",
+  "Jalepeno",
+  "Kabak",
+  "Soğan",
+  "Sarımsak",
+];
+
 function OrderPizza() {
   let count = 0;
   return (
@@ -40,7 +57,9 @@ function OrderPizza() {
             </p>
             <div className="boyut-hamur">
               <FormGroup tag="fieldset">
-                <legend>Boyut Seç</legend>
+                <Label>
+                  Boyut Seç <span>*</span>
+                </Label>
                 <FormGroup check>
                   <Input name="radio1" type="radio" />{" "}
                   <Label check>Küçük</Label>
@@ -54,63 +73,39 @@ function OrderPizza() {
                 </FormGroup>
               </FormGroup>
               <FormGroup>
-                <Label className="select-hamur" for="hamur">
-                  Hamur Seç
+                <Label for="hamur">
+                  Hamur Seç <span>*</span>
                 </Label>
                 <Input id="hamur" name="select" type="select">
                   <option>Hamur Kalınlığı</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                  <option>Kalın Kenar</option>
+                  <option>Orta Kenar</option>
+                  <option>İnce Kenar</option>
                 </Input>
               </FormGroup>
             </div>
-            <p>Ek Malzemeler</p>
-            <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
-            <Form>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some input</Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some other input</Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some other input</Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some other input</Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some other input</Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some other input</Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some other input</Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some other input</Label>
-              </FormGroup>
-              <FormGroup check inline>
-                <Input type="checkbox" />
-                <Label check>Some other input</Label>
-              </FormGroup>
-            </Form>
-
-            <p>Sipariş Notu</p>
-            <FormGroup>
-              <Label for="exampleText">Text Area</Label>
-              <Input id="exampleText" name="text" type="textarea" />
+            <div className="malzeme-container">
+              <p>Ek Malzemeler</p>
+              <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
+              <Form>
+                {malzemeler.map((malzeme, index) => {
+                  return (
+                    <FormGroup check inline>
+                      <Input type="checkbox" />
+                      <Label check>{malzeme}</Label>
+                    </FormGroup>
+                  );
+                })}
+              </Form>
+            </div>
+            <FormGroup className="sipariş-notu">
+              <Label for="exampleText">Sipariş Notu</Label>
+              <Input
+                id="exampleText"
+                name="text"
+                type="textarea"
+                placeholder="Siparişine eklemek istediğin bir not var mı?"
+              />
             </FormGroup>
             <hr />
             <div className="pizza-onay">

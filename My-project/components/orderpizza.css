@@ -9,13 +9,10 @@
   background-color: #ce2829;
   width: 100%;
   min-width: 390px;
-  padding: 5%;
+  padding: 2%;
   text-align: center;
 }
 
-.select-hamur {
-  background-color: antiquewhite;
-}
 .main {
   display: flex;
   justify-content: center;
@@ -46,7 +43,7 @@
 .boyut-hamur {
   display: flex;
   justify-content: space-between;
-  padding-right: 100px;
+  padding-right: 20%;
   flex-wrap: wrap;
 }
 
@@ -126,6 +123,59 @@
 .rakam-p {
   font-size: 1.7rem;
   font-weight: 700;
+}
+
+.boyut-hamur label:nth-child(1) {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.boyut-hamur label:nth-child(1) span {
+  color: #ce2829;
+}
+
+.boyut-hamur select {
+  font-weight: 700;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.boyut-hamur select option {
+  font-weight: 700;
+}
+
+.malzeme-container form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.malzeme-container form div {
+  flex-basis: 25%;
+}
+
+.malzeme-container p:first-child {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.malzeme-container p {
+  margin-bottom: 10px;
+}
+
+.malzeme-container label {
+  font-weight: 500;
+  min-width: 136px;
+}
+
+.sipariş-notu {
+  margin-top: 70px;
+}
+
+.sipariş-notu {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 /*
 .orderPizza {
