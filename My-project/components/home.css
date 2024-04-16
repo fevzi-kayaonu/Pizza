@@ -1,3 +1,10 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+
 .home {
   display: flex;
   justify-content: center;
@@ -33,4 +40,49 @@
   padding: 2% 7%;
   border-radius: 20px;
   text-transform: uppercase;
+}
+
+/*İterasyon-2 başlangıç*/
+/*main*/
+
+.home-main {
+  display: flex;
+  flex-direction: column;
+  background-color: #faf7f2;
+  padding: 5% 10%;
+}
+
+.home-main section:nth-child(1) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.home-main section:nth-child(1) div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.home-main section:nth-child(1) img {
+  border-radius: 10px;
+}
+
+/*navigasyon üst */
+
+.nav-serit {
+  display: flex;
+  justify-content: center;
+  gap: 8vw;
+  padding: 25px;
+}
+
+.nav-serit a {
+  text-decoration: none;
+  font-family: "Barlow", sans-serif;
+  color: black;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
 }
