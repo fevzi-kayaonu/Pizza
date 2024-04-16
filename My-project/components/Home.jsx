@@ -59,156 +59,145 @@ function Home() {
           </a>
         </nav>
         <main className="home-main">
-          <section>
-            <div className="lezzetus-container">
-              <img
-                src="../../Assets/mile2-aseets/cta/kart-1.png"
-                alt="kart1.png"
-              />
-              <div className="ozel-lezzetus">
-                <h3>Özel Lezzetus</h3>
-                <p>Position:Absolute Acı Burger</p>
-                <a href="/">SİPARİŞ VER</a>
-              </div>
-            </div>
-            <div className="double-container">
-              <div className="hack-container">
+          <div className="sectionlar">
+            <section>
+              <div className="lezzetus-container">
                 <img
-                  src="../../Assets/mile2-aseets/cta/kart-2.png"
-                  alt="kart2.png"
+                  src="../../Assets/mile2-aseets/cta/kart-1.png"
+                  alt="kart1.png"
                 />
-                <div className="hack-burger">
-                  <h3>Hackathlon Burger Menü</h3>
+                <div className="ozel-lezzetus">
+                  <h3>Özel Lezzetus</h3>
+                  <p>Position:Absolute Acı Burger</p>
                   <a href="/">SİPARİŞ VER</a>
                 </div>
               </div>
-              <div className="cok-container">
-                <img
-                  src="../../Assets/mile2-aseets/cta/kart-3.png"
-                  alt="kart3.png"
-                />
-                <div className="cok-hızlı">
-                  <h3>
-                    {" "}
-                    <span>Çooooook</span> hızlı npm gibi kurye{" "}
-                  </h3>
-                  <a href="/">SİPARİŞ VER</a>
+              <div className="double-container">
+                <div className="hack-container">
+                  <img
+                    src="../../Assets/mile2-aseets/cta/kart-2.png"
+                    alt="kart2.png"
+                  />
+                  <div className="hack-burger">
+                    <h3>Hackathlon Burger Menü</h3>
+                    <a href="/">SİPARİŞ VER</a>
+                  </div>
+                </div>
+                <div className="cok-container">
+                  <img
+                    src="../../Assets/mile2-aseets/cta/kart-3.png"
+                    alt="kart3.png"
+                  />
+                  <div className="cok-hızlı">
+                    <h3>
+                      {" "}
+                      <span>Çooooook</span> hızlı npm gibi kurye{" "}
+                    </h3>
+                    <a href="/">SİPARİŞ VER</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
-          <section>
-            <div>
-              <p>En Çok paketlenen Menüler</p>
-              <h1>Acıktıran Kodlara Doyuran Lezzetler</h1>
-            </div>
-            <nav className="nav-section">
-              <a href="/">
-                {" "}
-                <img
-                  src="../../Assets/mile2-aseets/icons/1.svg"
-                  alt="ikon1.svg"
-                />
-                YENİ! Kore
-              </a>
-              <a href="/">
-                <img
-                  src="../../Assets/mile2-aseets/icons/2.svg"
-                  alt="ikon2.svg"
-                />
-                Pizza
-              </a>
-              <a href="/">
-                <img
-                  src="../../Assets/mile2-aseets/icons/3.svg"
-                  alt="ikon3.svg"
-                />
-                Burger
-              </a>
-              <a href="/">
-                <img
-                  src="../../Assets/mile2-aseets/icons/4.svg"
-                  alt="ikon4.svg"
-                />
-                Kızartmalar
-              </a>
-              <a href="/">
-                <img
-                  src="../../Assets/mile2-aseets/icons/5.svg"
-                  alt="ikon5.svg"
-                />
-                Fastfood
-              </a>
-              <a href="/">
-                <img
-                  src="../../Assets/mile2-aseets/icons/6.svg"
-                  alt="ikon6.svg"
-                />
-                Gazlı İçecek
-              </a>
-            </nav>
-            <div className="card-container">
-              <CardGroup>
-                <Card>
-                  <CardImg
+            </section>
+            <section>
+              <div>
+                <p className="paket-menü">En Çok paketlenen Menüler</p>
+                <h1>Acıktıran Kodlara Doyuran Lezzetler</h1>
+              </div>
+              <nav className="nav-section">
+                <a href="/">
+                  {" "}
+                  <img
+                    src="../../Assets/mile2-aseets/icons/1.svg"
+                    alt="ikon1.svg"
+                  />
+                  YENİ! Kore
+                </a>
+                <a href="/">
+                  <img
+                    src="../../Assets/mile2-aseets/icons/2.svg"
+                    alt="ikon2.svg"
+                  />
+                  Pizza
+                </a>
+                <a href="/">
+                  <img
+                    src="../../Assets/mile2-aseets/icons/3.svg"
+                    alt="ikon3.svg"
+                  />
+                  Burger
+                </a>
+                <a href="/">
+                  <img
+                    src="../../Assets/mile2-aseets/icons/4.svg"
+                    alt="ikon4.svg"
+                  />
+                  Kızartmalar
+                </a>
+                <a href="/">
+                  <img
+                    src="../../Assets/mile2-aseets/icons/5.svg"
+                    alt="ikon5.svg"
+                  />
+                  Fastfood
+                </a>
+                <a href="/">
+                  <img
+                    src="../../Assets/mile2-aseets/icons/6.svg"
+                    alt="ikon6.svg"
+                  />
+                  Gazlı İçecek
+                </a>
+              </nav>
+              <div className="card-container">
+                <div className="home-card">
+                  <img
                     alt="foot1-png"
                     src="../../Assets/mile2-aseets/pictures/food-1.png"
                     top
                     width="100%"
                   />
-                  <CardBody>
-                    <CardTitle tag="h5">Card title</CardTitle>
-                    <CardSubtitle className="mb-2 text-muted" tag="h6">
-                      Card subtitle
-                    </CardSubtitle>
-                    <CardText>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </CardText>
-                  </CardBody>
-                </Card>
-                <Card>
-                  <CardImg
+                  <div className="card-text">
+                    <h5>Terminal Pizza</h5>
+                    <div className="section-rakamlar">
+                      <p>4.9</p>
+                      <p>(200)</p>
+                      <p>60₺</p>{" "}
+                    </div>
+                  </div>
+                </div>
+                <div className="home-card">
+                  <img
                     alt="foot2-png"
                     src="../../Assets/mile2-aseets/pictures/food-2.png"
                     top
-                    width="100%"
+                    width="80%"
                   />
-                  <CardBody>
-                    <CardTitle tag="h5">Card title</CardTitle>
-                    <CardSubtitle className="mb-2 text-muted" tag="h6">
-                      Card subtitle
-                    </CardSubtitle>
-                    <CardText>
-                      This card has supporting text below as a natural lead-in
-                      to additional content.
-                    </CardText>
-                  </CardBody>
-                </Card>
-                <Card>
-                  <CardImg
+                  <div className="card-text">
+                    <h5>Position Absolute Acı Pizza</h5>
+                    <div className="section-rakamlar">
+                      <p>4.9</p>
+                      <p>(928)</p>
+                      <p>85₺</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="home-card">
+                  <img
                     alt="foot3-png"
                     src="../../Assets/mile2-aseets/pictures/food-3.png"
-                    top
-                    width="100%"
                   />
-                  <CardBody>
-                    <CardTitle tag="h5">Card title</CardTitle>
-                    <CardSubtitle className="mb-2 text-muted" tag="h6">
-                      Card subtitle
-                    </CardSubtitle>
-                    <CardText>
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This card has even
-                      longer content than the first to show that equal height
-                      action.
-                    </CardText>
-                  </CardBody>
-                </Card>
-              </CardGroup>
-            </div>
-          </section>
+                  <div className="card-text">
+                    <h5>useEffect Tavuklu Burger</h5>
+                    <div className="section-rakamlar">
+                      <p>4.9</p>
+                      <p>(462)</p>
+                      <p>75₺</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
         </main>
         <Footer></Footer>
       </div>

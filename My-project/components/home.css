@@ -60,7 +60,6 @@
   align-items: center;
   justify-content: center;
   background-color: #faf7f2;
-  gap: 10vh;
   padding: 5vh;
 }
 
@@ -70,8 +69,10 @@
 
 .home-main section:nth-child(1) {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+  margin-bottom: 10vh;
 }
 
 .lezzetus-container {
@@ -158,7 +159,8 @@
   gap: 20px;
 }
 
-.home-main section:nth-child(2) p:nth-child(1) {
+/*.home-main section:nth-child(2) p:nth-child(1)*/
+.paket-menü {
   font-family: "Satisfy", cursive;
   font-size: 2rem;
   line-height: 2.75rem;
@@ -235,4 +237,53 @@
 .home-container a:hover {
   background-color: #292929;
   color: white;
+}
+
+/**section 2 */
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  height: auto;
+  width: 32%;
+  border-radius: 10px;
+}
+
+.home-card img {
+  width: 70%;
+  margin: 5%;
+}
+
+.card-text {
+  width: 80%;
+}
+
+.section-rakamlar {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.section-rakamlar p {
+  font-family: "Barlow", serif;
+}
+
+.section-rakamlar p:last-child {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.54rem;
+}
+
+.home-card h5 {
+  font-family: "Barlow", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.8;
 }
