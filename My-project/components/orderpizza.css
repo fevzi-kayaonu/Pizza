@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  margin-bottom: 6vh;
 }
 
 .all header {
@@ -169,8 +170,8 @@
   min-width: 136px;
 }
 
-.sipariş-notu {
-  margin-top: 70px;
+.malzeme-container {
+  margin-bottom: 6vh;
 }
 
 .sipariş-notu {
