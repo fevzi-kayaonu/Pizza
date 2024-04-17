@@ -3,6 +3,7 @@ import "./orderpizza.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
+import axios from "axios";
 
 const malzemeler = [
   "Pepperoni",
@@ -26,7 +27,6 @@ const errorMessage = {
   malzeme: "En az 4 malzeme seçmelisiniz.",
   isim: "En az 3 karakterli isim girmeliniz.",
 };
-
 const siparisForm = {
   isim: "",
   boyut: "",
@@ -34,98 +34,102 @@ const siparisForm = {
   malzemeler: [],
   adet: 0,
   not: "",
-  total: 0,
+  total: function () {
+    return (
+      this.adet *
+      ((this.boyut === "Küçük"
+        ? 85.5
+        : this.boyut === "Orta"
+        ? 100.5
+        : this.boyut === "Büyük"
+        ? 125.5
+        : 0) +
+        this.malzemeler.length * 5)
+    );
+  },
 };
 
 function OrderPizza() {
   const [siparisData, setSiparisData] = useState(siparisForm);
+  const [isValid, setIsValid] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  const [count, setCount] = useState(0);
-  const [total, setTotal] = useState(0);
-  const [size, setSize] = useState("");
-  const [secilenMalzemeler, setSecilenMalzemeler] = useState([]);
-  const [name, setName] = useState("");
-  const [siparisNotu, setSiparisNotu] = useState("");
-  const [hamurSecimi, sethamurSecimi] = useState("");
-
-  /*
-  useEffect(() => {
-    
-    let siparisOkey = false; 
-      
-    const errorMessage_ = {
-      boyut: "",
-      hamur: "",
-      malzeme:"" ,
-      isim: "",
-    };
-     
-   siparisOkey = siparisData.malzemeler.lenght >=4 ?  errorMessage_.malzeme=errorMessage.malzeme;
-                 siparisData.isim.lenght>3? true;
-  }, [...siparisData]);
-*/
-  console.log(siparisData);
-
-  const onChangeHamur = (e) => {
-    const hamur = e.target.value;
-    sethamurSecimi(hamur);
-    siparisData.hamur = hamur;
-  };
-
-  const onChangeName = (e) => {
-    setName(e.target.value);
-    siparisData.isim = e.target.value;
-  };
-
-  const onChangeSiparisNotu = (e) => {
-    setSiparisNotu(e.target.value);
-    siparisData.not = e.target.value;
-  };
-
-  const onChange = (type) => {
-    type == "Arttır"
-      ? setCount(count + 1)
-      : type == "Azalt" && count > 0
-      ? setCount(count - 1)
-      : null;
-  };
-
-  const onChangeSecimler = (e) => {
-    const malzeme = e.target.value;
-    const newMalzeme = [...secilenMalzemeler];
-
-    if (!newMalzeme.includes(malzeme)) {
-      newMalzeme.push(malzeme);
-      setSecilenMalzemeler(newMalzeme);
+  const onChange = (event) => {
+    if (event === "arttır") {
+      setSiparisData({ ...siparisData, adet: siparisData.adet + 1 });
+    } else if (event === "azalt" && siparisData.adet > 0) {
+      setSiparisData({ ...siparisData, adet: siparisData.adet - 1 });
     } else {
-      newMalzeme.splice(newMalzeme.indexOf(malzeme), 1);
-      setSecilenMalzemeler(newMalzeme);
+      const { name, value } = event.target;
+
+      if (name === "malzeme") {
+        const newMalzemeler = [...siparisData.malzemeler];
+        const index = newMalzemeler.indexOf(value);
+        if (index == -1) {
+          newMalzemeler.push(value);
+        } else {
+          newMalzemeler.splice(index, 1);
+        }
+        setSiparisData({ ...siparisData, malzemeler: [...newMalzemeler] });
+      } else {
+        setSiparisData({ ...siparisData, [name]: value });
+      }
     }
-    siparisData.malzemeler = [...newMalzeme];
   };
 
-  const onChangeSize = (e) => {
-    const newVal = e.target.value;
-    setSize(newVal);
-    siparisData.boyut = newVal;
+  const validation = () => {
+    let newErrors = {};
+
+    if (!siparisData.boyut) {
+      newErrors.boyut = errorMessage.boyut;
+    }
+
+    if (!siparisData.hamur || siparisData.hamur === "Hamur Kalınlığı") {
+      newErrors.hamur = errorMessage.hamur;
+    }
+
+    if (siparisData.malzemeler.length < 4) {
+      newErrors.malzeme = errorMessage.malzeme;
+    }
+
+    if (siparisData.isim.length < 3) {
+      newErrors.isim = errorMessage.isim;
+    }
+    setErrors(newErrors);
   };
 
   useEffect(() => {
-    const sizeMoney =
-      size == "Küçük"
-        ? 85.5
-        : size == "Orta"
-        ? 105.5
-        : size == "Büyük"
-        ? 125.5
-        : 0;
+    validation();
+  }, [siparisData]);
 
-    const total = sizeMoney * count + secilenMalzemeler.length * 5 * count;
-    setTotal(total);
-    siparisData.total = total;
-  }, [secilenMalzemeler, size, count]);
+  useEffect(() => {
+    setIsValid(
+      !errors.isim &&
+        !errors.malzeme &&
+        !errors.hamur &&
+        !errors.boyut &&
+        siparisData.total() !== 0
+    );
+  }, [errors]);
 
-  // useEffect( () => {  },[size])
+  const onClick = (e) => {
+    if (!isValid) {
+      e.preventDefault();
+      return;
+    }
+
+    axios
+      .post("https://reqres.in/api/pizza", siparisData)
+      .then((response) => {
+        console.log("Post isteği başarı ile gönderildi.");
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log("Post isteği başarısız oldu.");
+        console.error("Hata:", error);
+      });
+  };
+
   return (
     <>
       <div className="all">
@@ -167,32 +171,32 @@ function OrderPizza() {
                 </Label>
                 <FormGroup check>
                   <Input
-                    name="radio1"
+                    name="boyut"
                     type="radio"
                     value="Küçük"
-                    onChange={onChangeSize}
+                    onChange={onChange}
                   />{" "}
                   <Label check>Küçük</Label>
                 </FormGroup>
                 <FormGroup check>
                   <Input
-                    name="radio1"
+                    name="boyut"
                     type="radio"
                     value="Orta"
-                    onChange={onChangeSize}
+                    onChange={onChange}
                   />{" "}
                   <Label check>Orta</Label>
                 </FormGroup>
                 <FormGroup check>
                   <Input
-                    name="radio1"
+                    name="boyut"
                     type="radio"
                     value="Büyük"
-                    onChange={onChangeSize}
+                    onChange={onChange}
                   />{" "}
                   <Label check>Büyük</Label>
                 </FormGroup>
-                <p>{siparisData.boyut === "" ? errorMessage.boyut : null}</p>
+                {errors.boyut && <p>{errors.boyut}</p>}
               </FormGroup>
               <FormGroup>
                 <Label for="hamur">
@@ -200,17 +204,17 @@ function OrderPizza() {
                 </Label>
                 <Input
                   id="hamur"
-                  name="select"
+                  name="hamur"
                   type="select"
-                  onChange={onChangeHamur}
-                  value={hamurSecimi}
+                  onChange={onChange}
+                  value={siparisData.hamur}
                 >
                   <option>Hamur Kalınlığı</option>
                   <option>Kalın Kenar</option>
                   <option>Orta Kenar</option>
                   <option>İnce Kenar</option>
                 </Input>
-                <p>{siparisData.hamur === "" ? errorMessage.hamur : null}</p>
+                {errors.hamur && <p>{errors.hamur}</p>}
               </FormGroup>
             </div>
             <div className="malzeme-container">
@@ -222,12 +226,13 @@ function OrderPizza() {
                     <FormGroup check inline key={index}>
                       <Input
                         type="checkbox"
-                        onChange={onChangeSecimler}
+                        name="malzeme"
+                        onChange={onChange}
                         value={malzeme}
                         disabled={
-                          secilenMalzemeler.includes(malzeme)
+                          siparisData.malzemeler.includes(malzeme)
                             ? false
-                            : secilenMalzemeler.length >= 10
+                            : siparisData.malzemeler.length >= 10
                             ? true
                             : false
                         }
@@ -237,11 +242,7 @@ function OrderPizza() {
                   );
                 })}
               </Form>
-              <p>
-                {siparisData.malzemeler.length < 4
-                  ? errorMessage.malzeme
-                  : null}
-              </p>
+              {errors.malzeme && <p>{errors.malzeme}</p>}
             </div>
             <FormGroup className="sipariş-notu">
               <Label for="isim">İsim</Label>
@@ -250,32 +251,30 @@ function OrderPizza() {
                 name="isim"
                 type="textarea"
                 placeholder="En az 3 karakterli isim giriniz!"
-                onChange={onChangeName}
-                value={name}
-                invalid={siparisData.isim.length < 3}
+                onChange={onChange}
+                value={siparisData.isim}
+                invalid={!!errors.isim}
               />
-              {siparisData.isim.length < 3 && (
-                <FormFeedback>{errorMessage.isim}</FormFeedback>
-              )}
+              {errors.isim && <FormFeedback>{errors.isim}</FormFeedback>}
             </FormGroup>
 
             <FormGroup className="sipariş-notu">
-              <Label for="exampleText">Sipariş Notu</Label>
+              <Label for="siparişNotu">Sipariş Notu</Label>
               <Input
-                id="exampleText"
-                name="text"
+                id="siparişNotu"
+                name="not"
                 type="textarea"
                 placeholder="Siparişine eklemek istediğin bir not var mı?"
-                onChange={onChangeSiparisNotu}
-                value={siparisNotu}
+                onChange={onChange}
+                value={siparisData.not}
               />
             </FormGroup>
             <hr />
             <div className="pizza-onay">
               <div className="sayac">
-                <button onClick={() => onChange("Azalt")}>-</button>{" "}
-                <p>{count}</p>{" "}
-                <button onClick={() => onChange("Arttır")}>+</button>
+                <button onClick={() => onChange("azalt")}>-</button>{" "}
+                <p>{siparisData.adet}</p>{" "}
+                <button onClick={() => onChange("arttır")}>+</button>
               </div>
               <div className="sipariş-card">
                 {" "}
@@ -283,14 +282,18 @@ function OrderPizza() {
                   <h5>Sipariş Toplamı</h5>
                   <div className="secimler">
                     <p>Seçimler</p>{" "}
-                    <p>{secilenMalzemeler.length * 5 * count}₺</p>
+                    <p>
+                      {siparisData.malzemeler.length * 5 * siparisData.adet}₺
+                    </p>
                   </div>
                   <div className="toplam">
-                    <p>Toplam</p> <p>{total}₺</p>
+                    <p>Toplam</p> <p>{siparisData.total()}₺</p>
                   </div>
                 </div>
                 <div className="link-pizza">
-                  <Link to="/OrderSuccess">SİPARİŞ VER</Link>{" "}
+                  <Link to={isValid ? "/OrderSuccess" : ""} onClick={onClick}>
+                    SİPARİŞ VER
+                  </Link>
                 </div>
               </div>
             </div>
