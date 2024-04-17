@@ -6,15 +6,17 @@ import OrderSuccess from "./components/OrderSuccess";
 function App() {
   return (
     <>
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route exact path="/OrderPizza">
-        <OrderPizza />
-      </Route>
-      <Route exact path="/OrderSuccess">
-        <OrderSuccess />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/OrderPizza">
+          <OrderPizza />
+        </Route>
+        <Route exact path="/OrderSuccess">
+          <OrderSuccess />
+        </Route>
+      </Switch>
     </>
   );
 }

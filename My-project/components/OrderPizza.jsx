@@ -1,4 +1,4 @@
-import { Form, FormGroup, Input, Label } from "reactstrap";
+import { Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 import "./orderpizza.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -12,7 +12,6 @@ const malzemeler = [
   "Mısır",
   "Sucuk",
   "Kanada Jambonu",
-  "Sucuk",
   "Ananas",
   "Tavuk Izgara",
   "Jalepeno",
@@ -21,27 +20,67 @@ const malzemeler = [
   "Sarımsak",
 ];
 
+const errorMessage = {
+  boyut: "Lütfen pizza boyutunu seçiniz.",
+  hamur: "Lütfen hamur kalınlığını seçiniz.",
+  malzeme: "En az 4 malzeme seçmelisiniz.",
+  isim: "En az 3 karakterli isim girmeliniz.",
+};
+
+const siparisForm = {
+  isim: "",
+  boyut: "",
+  hamur: "",
+  malzemeler: [],
+  adet: 0,
+  not: "",
+  total: 0,
+};
+
 function OrderPizza() {
+  const [siparisData, setSiparisData] = useState(siparisForm);
+
   const [count, setCount] = useState(0);
-  const [secimler, setSecimler] = useState(0);
   const [total, setTotal] = useState(0);
   const [size, setSize] = useState("");
   const [secilenMalzemeler, setSecilenMalzemeler] = useState([]);
   const [name, setName] = useState("");
   const [siparisNotu, setSiparisNotu] = useState("");
+  const [hamurSecimi, sethamurSecimi] = useState("");
+
+  /*
+  useEffect(() => {
+    
+    let siparisOkey = false; 
+      
+    const errorMessage_ = {
+      boyut: "",
+      hamur: "",
+      malzeme:"" ,
+      isim: "",
+    };
+     
+   siparisOkey = siparisData.malzemeler.lenght >=4 ?  errorMessage_.malzeme=errorMessage.malzeme;
+                 siparisData.isim.lenght>3? true;
+  }, [...siparisData]);
+*/
+  console.log(siparisData);
+
+  const onChangeHamur = (e) => {
+    const hamur = e.target.value;
+    sethamurSecimi(hamur);
+    siparisData.hamur = hamur;
+  };
 
   const onChangeName = (e) => {
     setName(e.target.value);
+    siparisData.isim = e.target.value;
   };
 
   const onChangeSiparisNotu = (e) => {
     setSiparisNotu(e.target.value);
+    siparisData.not = e.target.value;
   };
-
-  useEffect(() => {
-    console.log(name);
-    console.log(siparisNotu);
-  }, [name, siparisNotu]);
 
   const onChange = (type) => {
     type == "Arttır"
@@ -53,20 +92,22 @@ function OrderPizza() {
 
   const onChangeSecimler = (e) => {
     const malzeme = e.target.value;
+    const newMalzeme = [...secilenMalzemeler];
 
-    if (!secilenMalzemeler.includes(malzeme))
-      setSecilenMalzemeler([...secilenMalzemeler, malzeme]);
-    else {
-      const newMalzeme = [...secilenMalzemeler];
+    if (!newMalzeme.includes(malzeme)) {
+      newMalzeme.push(malzeme);
+      setSecilenMalzemeler(newMalzeme);
+    } else {
       newMalzeme.splice(newMalzeme.indexOf(malzeme), 1);
       setSecilenMalzemeler(newMalzeme);
     }
+    siparisData.malzemeler = [...newMalzeme];
   };
 
-  console.log(secilenMalzemeler);
   const onChangeSize = (e) => {
     const newVal = e.target.value;
     setSize(newVal);
+    siparisData.boyut = newVal;
   };
 
   useEffect(() => {
@@ -78,13 +119,11 @@ function OrderPizza() {
         : size == "Büyük"
         ? 125.5
         : 0;
-    //setSecimler(secilenMalzemeler.length*5);
-    setTotal(sizeMoney * count + secimler * count);
-  }, [secimler, size, count]);
 
-  useEffect(() => {
-    setSecimler(secilenMalzemeler.length * 5);
-  }, [secilenMalzemeler]);
+    const total = sizeMoney * count + secilenMalzemeler.length * 5 * count;
+    setTotal(total);
+    siparisData.total = total;
+  }, [secilenMalzemeler, size, count]);
 
   // useEffect( () => {  },[size])
   return (
@@ -153,37 +192,56 @@ function OrderPizza() {
                   />{" "}
                   <Label check>Büyük</Label>
                 </FormGroup>
+                <p>{siparisData.boyut === "" ? errorMessage.boyut : null}</p>
               </FormGroup>
               <FormGroup>
                 <Label for="hamur">
                   Hamur Seç <span>*</span>
                 </Label>
-                <Input id="hamur" name="select" type="select">
+                <Input
+                  id="hamur"
+                  name="select"
+                  type="select"
+                  onChange={onChangeHamur}
+                  value={hamurSecimi}
+                >
                   <option>Hamur Kalınlığı</option>
                   <option>Kalın Kenar</option>
                   <option>Orta Kenar</option>
                   <option>İnce Kenar</option>
                 </Input>
+                <p>{siparisData.hamur === "" ? errorMessage.hamur : null}</p>
               </FormGroup>
             </div>
             <div className="malzeme-container">
               <p>Ek Malzemeler</p>
-              <p>En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
+              <p>En Fazla 10 malzeme , en az 4 malzeme seçebilirsiniz. 5₺</p>
               <Form>
                 {malzemeler.map((malzeme, index) => {
                   return (
-                    <FormGroup check inline>
+                    <FormGroup check inline key={index}>
                       <Input
                         type="checkbox"
                         onChange={onChangeSecimler}
                         value={malzeme}
-                        key={index}
+                        disabled={
+                          secilenMalzemeler.includes(malzeme)
+                            ? false
+                            : secilenMalzemeler.length >= 10
+                            ? true
+                            : false
+                        }
                       />
                       <Label check>{malzeme}</Label>
                     </FormGroup>
                   );
                 })}
               </Form>
+              <p>
+                {siparisData.malzemeler.length < 4
+                  ? errorMessage.malzeme
+                  : null}
+              </p>
             </div>
             <FormGroup className="sipariş-notu">
               <Label for="isim">İsim</Label>
@@ -194,8 +252,13 @@ function OrderPizza() {
                 placeholder="En az 3 karakterli isim giriniz!"
                 onChange={onChangeName}
                 value={name}
+                invalid={siparisData.isim.length < 3}
               />
+              {siparisData.isim.length < 3 && (
+                <FormFeedback>{errorMessage.isim}</FormFeedback>
+              )}
             </FormGroup>
+
             <FormGroup className="sipariş-notu">
               <Label for="exampleText">Sipariş Notu</Label>
               <Input
@@ -219,7 +282,8 @@ function OrderPizza() {
                 <div className="sipariş-genel">
                   <h5>Sipariş Toplamı</h5>
                   <div className="secimler">
-                    <p>Seçimler</p> <p>{secimler}₺</p>
+                    <p>Seçimler</p>{" "}
+                    <p>{secilenMalzemeler.length * 5 * count}₺</p>
                   </div>
                   <div className="toplam">
                     <p>Toplam</p> <p>{total}₺</p>

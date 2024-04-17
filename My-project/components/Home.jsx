@@ -1,15 +1,6 @@
 import { Link } from "react-router-dom";
 import "./home.css";
 import Footer from "./Footer";
-import {
-  Card,
-  CardBody,
-  CardGroup,
-  CardImg,
-  CardSubtitle,
-  CardText,
-  CardTitle,
-} from "reactstrap";
 
 function Home() {
   return (
