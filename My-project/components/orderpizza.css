@@ -129,7 +129,16 @@ nav a:nth-of-type(2) {
   text-decoration: none;
   color: black;
   font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+.link-pizza:hover {
+  background-color: #f5c000;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.384);
+}
+
 .secimler,
 .toplam {
   display: flex;
@@ -167,6 +176,12 @@ nav a:nth-of-type(2) {
   font-weight: 600;
   border-color: #fdc913;
   font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.sayac button:hover {
+  border-color: #fcc500;
+  font-size: 1.6rem;
 }
 
 .sayac button:nth-of-type(1) {
