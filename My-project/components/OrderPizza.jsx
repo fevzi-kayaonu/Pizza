@@ -146,32 +146,44 @@ function OrderPizza(props) {
             src="../../Assets/mile1-assets/logo.svg"
             alt="Teknolojik Yemekler"
           />
-          <nav>
-            <a href="">AnaSayfa-</a>
-            <a href="">Seçenekler-</a>
-            <a href="">Sipariş Oluştur</a>
-          </nav>
         </header>
 
-        <div className="main">
-          <div className="container-orderpizza">
-            <h2>Position Absolute Acı Pizza</h2>
-            <div className="rakam">
-              <p className="rakam-p">85.50₺</p>
-              <div className="rakam2">
-                <p>4.9</p>
-                <p>(200)</p>
+        <section>
+          {" "}
+          <article className="article-ust">
+            <img
+              src="../../Assets/mile2-aseets/pictures/form-banner.png"
+              alt=""
+            />
+            <div className="ust-content">
+              <nav>
+                <a href="/">AnaSayfa - </a>
+                <a href="">Sipariş Oluştur</a>
+              </nav>
+              <h2>Position Absolute Acı Pizza</h2>
+              <div className="rakam">
+                <p className="rakam-p">85.50₺</p>
+
+                <div className="rakam-2">
+                  <p>4.9</p>
+                  <p>(200)</p>
+                </div>
               </div>
+              <p>
+                Frontent Dev olarak hala position:absolute kullanıyorsan bu çok
+                acı pizza tam sana göre. Pizza, domates, peynir ve genellikle
+                çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel
+                olarak odun ateşinde bir fırında yüksek sıcaklıkta pişirilen,
+                genellikle yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan
+                oluşan İtalyan kökenli lezzetli bir yemektir. . Küçük bir
+                pizzaya bazen pizzetta denir.
+              </p>
             </div>
-            <p>
-              Frontent Dev olarak hala position:absolute kullanıyorsan bu çok
-              acı pizza tam sana göre. Pizza, domates, peynir ve genellikle
-              çeşitli diğer malzemelerle kaplanmış, daha sonra geleneksel olarak
-              odun ateşinde bir fırında yüksek sıcaklıkta pişirilen, genellikle
-              yuvarlak, düzleştirilmiş mayalı buğday bazlı hamurdan oluşan
-              İtalyan kökenli lezzetli bir yemektir. . Küçük bir pizzaya bazen
-              pizzetta denir.
-            </p>
+          </article>
+        </section>
+
+        <section>
+          <article className="article-alt">
             <div className="boyut-hamur">
               <FormGroup tag="fieldset">
                 <Label>
@@ -307,14 +319,26 @@ function OrderPizza(props) {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
+          </article>
+        </section>
+
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
     </>
   );
 }
 /*
+
+ <section>
+          <div className="article-alt">
+            
+          
+          
+        </section>
+
+
+
+
 
 <div className="link-pizza"> 
 <Link to={isValid ? "/OrderSuccess" : ""} onClick={onClick}>

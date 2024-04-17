@@ -1,9 +1,20 @@
+import { useHistory } from "react-router-dom";
 import "./ordersuccess.css";
 function OrderSuccess(props) {
   const { siparisData } = props;
 
-  console.log("props:", props);
-  console.log("siparisData:", siparisData);
+  /*
+  const history = useHistory();
+  
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      history.push("/");
+    }, 3000);
+
+    return () => clearTimeout(timeout);
+  }, [history]);
+  */
 
   return (
     <>
