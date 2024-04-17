@@ -191,30 +191,39 @@ function OrderPizza(props) {
                 </Label>
                 <FormGroup check>
                   <Input
+                    id="küçük"
                     name="boyut"
                     type="radio"
                     value="Küçük"
                     onChange={onChange}
                   />{" "}
-                  <Label check>Küçük</Label>
+                  <Label for="küçük" check>
+                    Küçük
+                  </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Input
+                    id="orta"
                     name="boyut"
                     type="radio"
                     value="Orta"
                     onChange={onChange}
                   />{" "}
-                  <Label check>Orta</Label>
+                  <Label for="orta" check>
+                    Orta
+                  </Label>
                 </FormGroup>
                 <FormGroup check>
                   <Input
+                    id="büyük"
                     name="boyut"
                     type="radio"
                     value="Büyük"
                     onChange={onChange}
                   />{" "}
-                  <Label check>Büyük</Label>
+                  <Label for="büyük" check>
+                    Büyük
+                  </Label>
                 </FormGroup>
                 {errors.boyut && <p className="red-p">{errors.boyut}</p>}
               </FormGroup>
@@ -227,12 +236,13 @@ function OrderPizza(props) {
                   name="hamur"
                   type="select"
                   onChange={onChange}
-                  value={siparisData.hamur}
+                  /* value={siparisData.hamur}*/
                 >
                   <option>Hamur Kalınlığı</option>
                   <option>Kalın Kenar</option>
                   <option>Orta Kenar</option>
                   <option>İnce Kenar</option>
+                  <option>Süper İnce Kenar</option>
                 </Input>
                 {errors.hamur && <p className="red-p">{errors.hamur}</p>}
               </FormGroup>
@@ -245,6 +255,7 @@ function OrderPizza(props) {
                   return (
                     <FormGroup check inline key={index}>
                       <Input
+                        id={malzeme}
                         type="checkbox"
                         name="malzeme"
                         onChange={onChange}
@@ -257,7 +268,9 @@ function OrderPizza(props) {
                             : false
                         }
                       />
-                      <Label check>{malzeme}</Label>
+                      <Label for={malzeme} check>
+                        {malzeme}
+                      </Label>
                     </FormGroup>
                   );
                 })}
