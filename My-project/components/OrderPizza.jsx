@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import axios from "axios";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const malzemeler = [
   "Pepperoni",
@@ -49,10 +50,14 @@ const siparisForm = {
   },
 };
 
-function OrderPizza() {
+function OrderPizza(props) {
   const [siparisData, setSiparisData] = useState(siparisForm);
   const [isValid, setIsValid] = useState(false);
   const [errors, setErrors] = useState({});
+
+  const history = useHistory();
+
+  const { data } = props;
 
   const onChange = (event) => {
     if (event === "arttır") {
@@ -92,7 +97,7 @@ function OrderPizza() {
       newErrors.malzeme = errorMessage.malzeme;
     }
 
-    if (siparisData.isim.length < 3) {
+    if (siparisData.isim.trim().length < 3) {
       newErrors.isim = errorMessage.isim;
     }
     setErrors(newErrors);
@@ -113,16 +118,19 @@ function OrderPizza() {
   }, [errors]);
 
   const onClick = (e) => {
+    /*
     if (!isValid) {
       e.preventDefault();
       return;
     }
-
+   */
     axios
       .post("https://reqres.in/api/pizza", siparisData)
       .then((response) => {
         console.log("Post isteği başarı ile gönderildi.");
         console.log(response.data);
+        data(siparisData);
+        history.push("/OrderSuccess");
       })
       .catch((error) => {
         console.log("Post isteği başarısız oldu.");
@@ -196,7 +204,7 @@ function OrderPizza() {
                   />{" "}
                   <Label check>Büyük</Label>
                 </FormGroup>
-                {errors.boyut && <p>{errors.boyut}</p>}
+                {errors.boyut && <p className="red-p">{errors.boyut}</p>}
               </FormGroup>
               <FormGroup>
                 <Label for="hamur">
@@ -214,7 +222,7 @@ function OrderPizza() {
                   <option>Orta Kenar</option>
                   <option>İnce Kenar</option>
                 </Input>
-                {errors.hamur && <p>{errors.hamur}</p>}
+                {errors.hamur && <p className="red-p">{errors.hamur}</p>}
               </FormGroup>
             </div>
             <div className="malzeme-container">
@@ -242,7 +250,7 @@ function OrderPizza() {
                   );
                 })}
               </Form>
-              {errors.malzeme && <p>{errors.malzeme}</p>}
+              {errors.malzeme && <p className="red-p">{errors.malzeme}</p>}
             </div>
             <FormGroup className="sipariş-notu">
               <Label for="isim">İsim</Label>
@@ -290,11 +298,13 @@ function OrderPizza() {
                     <p>Toplam</p> <p>{siparisData.total()}₺</p>
                   </div>
                 </div>
-                <div className="link-pizza">
-                  <Link to={isValid ? "/OrderSuccess" : ""} onClick={onClick}>
-                    SİPARİŞ VER
-                  </Link>
-                </div>
+                <button
+                  className="link-pizza"
+                  disabled={!isValid}
+                  onClick={onClick}
+                >
+                  SİPARİŞ VER
+                </button>
               </div>
             </div>
           </div>
@@ -304,5 +314,11 @@ function OrderPizza() {
     </>
   );
 }
+/*
 
+<div className="link-pizza"> 
+<Link to={isValid ? "/OrderSuccess" : ""} onClick={onClick}>
+                    SİPARİŞ VER
+                  </Link>
+*/
 export default OrderPizza;

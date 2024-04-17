@@ -82,6 +82,11 @@
   font-weight: 600;
 }
 
+.red-p {
+  color: #ce2829;
+  margin-top: 1rem;
+}
+
 .sipariş-card {
   display: flex;
   flex-direction: column;
@@ -99,8 +104,6 @@
   border-radius: 10px;
   width: 100%;
   padding: 15px;
-}
-.link-pizza a {
   text-decoration: none;
   color: black;
   font-weight: 600;
