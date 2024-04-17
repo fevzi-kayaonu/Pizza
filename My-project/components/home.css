@@ -287,3 +287,157 @@
   font-weight: 600;
   line-height: 1.8;
 }
+
+@media screen and (max-width: 1600px) {
+  .ozel-lezzetus,
+  .hack-burger,
+  .cok-hızlı {
+    position: absolute;
+    top: 40px;
+    left: 44px;
+  }
+
+  .ozel-lezzetus h3 {
+    font-size: 3.1rem;
+    width: 30%;
+    line-height: 3.5rem;
+  }
+
+  .ozel-lezzetus p {
+    font-size: 1rem;
+    line-height: 1.27rem;
+  }
+
+  .home-main section:nth-child(1) img {
+    width: 530px;
+  }
+  .home-main section:nth-child(1) a {
+    font-size: 0.72rem;
+    line-height: 2.5rem;
+    border-radius: 34px;
+    margin-top: 0.85rem;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .ozel-lezzetus,
+  .hack-burger,
+  .cok-hızlı {
+    position: absolute;
+    top: 36px;
+    left: 38px;
+  }
+
+  .ozel-lezzetus h3 {
+    font-size: 3.1rem;
+    width: 30%;
+    line-height: 3.5rem;
+  }
+
+  .ozel-lezzetus p {
+    font-size: 1rem;
+    line-height: 1.27rem;
+  }
+
+  .home-main section:nth-child(1) img {
+    width: 430px;
+  }
+
+  .home-main section:nth-child(1) a {
+    font-size: 0.6rem;
+    line-height: 2rem;
+    border-radius: 29px;
+    margin-top: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .ozel-lezzetus,
+  .hack-burger,
+  .cok-hızlı {
+    position: absolute;
+    top: 32px;
+    left: 36px;
+  }
+
+  .ozel-lezzetus h3 {
+    font-size: 3.1rem;
+    width: 30%;
+    line-height: 3.5rem;
+  }
+
+  .ozel-lezzetus p {
+    font-size: 1rem;
+    line-height: 1.27rem;
+  }
+  .home-main section:nth-child(1) img {
+    width: 330px;
+  }
+  .home-main section:nth-child(1) a {
+    font-size: 0.5rem;
+    line-height: 1.5rem;
+    border-radius: 25px;
+    margin-top: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .ozel-lezzetus,
+  .hack-burger,
+  .cok-hızlı {
+    position: absolute;
+    top: 30px;
+    left: 34px;
+  }
+
+  .ozel-lezzetus h3 {
+    font-size: 3.1rem;
+    width: 30%;
+    line-height: 3.5rem;
+  }
+
+  .ozel-lezzetus p {
+    font-size: 1rem;
+    line-height: 1.27rem;
+  }
+
+  .home-main section:nth-child(1) img {
+    width: 230px;
+  }
+
+  .home-main section:nth-child(1) a {
+    font-size: 0.45rem;
+    line-height: 1.2rem;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .ozel-lezzetus,
+  .hack-burger,
+  .cok-hızlı {
+    position: absolute;
+    top: 26px;
+    left: 32px;
+  }
+
+  .ozel-lezzetus h3 {
+    font-size: 3.1rem;
+    width: 30%;
+    line-height: 3.5rem;
+  }
+
+  .ozel-lezzetus p {
+    font-size: 1rem;
+    line-height: 1.27rem;
+  }
+  .home-main section:nth-child(1) img {
+    width: 130px;
+  }
+  .home-main section:nth-child(1) a {
+    font-size: 0.4rem;
+    line-height: 1.05rem;
+    border-radius: 17px;
+    margin-top: 0.42rem;
+  }
+}
