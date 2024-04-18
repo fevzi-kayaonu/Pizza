@@ -195,6 +195,7 @@ function OrderPizza(props) {
                     name="boyut"
                     type="radio"
                     value="Küçük"
+                    checked={siparisData.boyut === "Küçük"}
                     onChange={onChange}
                   />{" "}
                   <Label for="küçük" check>
@@ -207,6 +208,7 @@ function OrderPizza(props) {
                     name="boyut"
                     type="radio"
                     value="Orta"
+                    checked={siparisData.boyut === "Orta"}
                     onChange={onChange}
                   />{" "}
                   <Label for="orta" check>
@@ -219,6 +221,7 @@ function OrderPizza(props) {
                     name="boyut"
                     type="radio"
                     value="Büyük"
+                    checked={siparisData.boyut === "Büyük"}
                     onChange={onChange}
                   />{" "}
                   <Label for="büyük" check>
@@ -260,6 +263,7 @@ function OrderPizza(props) {
                         name="malzeme"
                         onChange={onChange}
                         value={malzeme}
+                        checked={siparisData.malzemeler.includes(malzeme)}
                         disabled={
                           siparisData.malzemeler.includes(malzeme)
                             ? false
