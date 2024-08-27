@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import workintech from '/workintech.svg'
-import './App.css'
+import { Switch, Route } from "react-router-dom";
+import Home from "./components/Home";
+import OrderPizza from "./components/OrderPizza";
+import OrderSuccess from "./components/OrderSuccess";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [siparisData, setSiparisData] = useState({});
+
+  const data = (data) => {
+    setSiparisData(data);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://github.com/Workintech/fsweb-s7-challenge-pizza" target="_blank">
-          <img src={workintech} className="logo" alt="Workintech logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Workintech + 🍕</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          Absolute Acı Pizza sayısı {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Workintech or Pizza logos to learn more
-      </p>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/OrderPizza">
+          <OrderPizza data={data} />
+        </Route>
+        <Route exact path="/OrderSuccess">
+          <OrderSuccess siparisData={siparisData} />
+        </Route>
+      </Switch>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

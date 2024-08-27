@@ -1,29 +1,16 @@
-import { useHistory } from "react-router-dom";
 import "./ordersuccess.css";
+import logo from "../Assets/mile1-assets/logo.svg";
+
 function OrderSuccess(props) {
   const { siparisData } = props;
-
-  /*
-  const history = useHistory();
-  
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      history.push("/");
-    }, 3000);
-
-    return () => clearTimeout(timeout);
-  }, [history]);
-  */
-
+  if (!siparisData.total) {
+    return <div> sipariş yok </div>;
+  }
   return (
     <>
       <div className="success">
         <div className="success-container">
-          <img
-            src="../../Assets/mile1-assets/logo.svg"
-            alt="Teknolojik Yemekler"
-          />
+          <img src={logo} alt="Teknolojik Yemekler" />
 
           <div className="success-content">
             <p>lezzetin yolda</p>
@@ -67,6 +54,3 @@ function OrderSuccess(props) {
 }
 
 export default OrderSuccess;
-
-/*
- */

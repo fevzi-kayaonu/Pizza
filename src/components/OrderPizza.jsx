@@ -1,6 +1,7 @@
 import { Form, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 import "./orderpizza.css";
-import { Link } from "react-router-dom";
+import logo from "../Assets/mile1-assets/logo.svg";
+import formBanner from "../Assets/mile2-assets/pictures/form-banner.png";
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import axios from "axios";
@@ -118,12 +119,6 @@ function OrderPizza(props) {
   }, [errors]);
 
   const onClick = (e) => {
-    /*
-    if (!isValid) {
-      e.preventDefault();
-      return;
-    }
-   */
     axios
       .post("https://reqres.in/api/pizza", siparisData)
       .then((response) => {
@@ -142,19 +137,13 @@ function OrderPizza(props) {
     <>
       <div className="all">
         <header className="orderPizza">
-          <img
-            src="../../Assets/mile1-assets/logo.svg"
-            alt="Teknolojik Yemekler"
-          />
+          <img src={logo} alt="Teknolojik Yemekler" />
         </header>
 
         <section>
           {" "}
           <article className="article-ust">
-            <img
-              src="../../Assets/mile2-aseets/pictures/form-banner.png"
-              alt=""
-            />
+            <img src={formBanner} alt="formBanner" />
             <div className="ust-content">
               <nav>
                 <a href="/">AnaSayfa - </a>
@@ -338,16 +327,10 @@ function OrderPizza(props) {
             </div>
           </article>
         </section>
-
         <Footer></Footer>
       </div>
     </>
   );
 }
-/*
-<div className="link-pizza"> 
-<Link to={isValid ? "/OrderSuccess" : ""} onClick={onClick}>
-                    SİPARİŞ VER
-                  </Link>
-*/
+
 export default OrderPizza;

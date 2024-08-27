@@ -8,27 +8,27 @@ export default function Footer() {
         <div className="address-container">
           <img
             className="footer-logo"
-            src="../../Assets/mile2-aseets/footer/logo-footer.svg"
+            src="../Assets/mile2-aseets/footer/logo-footer.svg"
             alt="logo-footer.png"
           />
           <address className="address">
             <div>
               <img
-                src="../../Assets/mile2-aseets/footer/icons/icon-1.png"
+                src="../Assets/mile2-aseets/footer/icons/icon-1.png"
                 alt="Address Icon"
               />
               <p>341 Londonderry Road, Istanbul Türkiye</p>
             </div>
             <div>
               <img
-                src="../../Assets/mile2-aseets/footer/icons/icon-2.png"
+                src="../Assets/mile2-aseets/footer/icons/icon-2.png"
                 alt="Address Icon"
               />
               <p>aciktim@teknolojikyemekler.com</p>
             </div>
             <div>
               <img
-                src="../../Assets/mile2-aseets/footer/icons/icon-3.png"
+                src="../Assets/mile2-aseets/footer/icons/icon-3.png"
                 alt="Address Icon"
               />
               <p>+90 216 123 45 67</p>
@@ -50,27 +50,27 @@ export default function Footer() {
           <h4>Instagram</h4>
           <div>
             <img
-              src="../../Assets/mile2-aseets/footer/insta/li-0.png"
+              src="../Assets/mile2-aseets/footer/insta/li-0.png"
               alt="img-0"
             />
             <img
-              src="../../Assets/mile2-aseets/footer/insta/li-1.png"
+              src="../Assets/mile2-aseets/footer/insta/li-1.png"
               alt="img-1"
             />
             <img
-              src="../../Assets/mile2-aseets/footer/insta/li-2.png"
+              src="../Assets/mile2-aseets/footer/insta/li-2.png"
               alt="img-2"
             />
             <img
-              src="../../Assets/mile2-aseets/footer/insta/li-3.png"
+              src="../Assets/mile2-aseets/footer/insta/li-3.png"
               alt="img-3"
             />
             <img
-              src="../../Assets/mile2-aseets/footer/insta/li-4.png"
+              src="../Assets/mile2-aseets/footer/insta/li-4.png"
               alt="img-4"
             />
             <img
-              src="../../Assets/mile2-aseets/footer/insta/li-5.png"
+              src="../Assets/mile2-aseets/footer/insta/li-5.png"
               alt="img-5"
             />
           </div>

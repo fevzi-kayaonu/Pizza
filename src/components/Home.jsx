@@ -1,6 +1,19 @@
 import { Link } from "react-router-dom";
 import "./home.css";
 import Footer from "./Footer";
+import logo from "../Assets/mile1-assets/logo.svg";
+import icon1 from "../Assets/mile2-assets/icons/1.svg";
+import icon2 from "../Assets/mile2-assets/icons/2.svg";
+import icon3 from "../Assets/mile2-assets/icons/3.svg";
+import icon4 from "../Assets/mile2-assets/icons/4.svg";
+import icon5 from "../Assets/mile2-assets/icons/5.svg";
+import icon6 from "../Assets/mile2-assets/icons/6.svg";
+import kart1 from "../Assets/mile2-assets/cta/kart-1.png";
+import kart2 from "../Assets/mile2-assets/cta/kart-2.png";
+import kart3 from "../Assets/mile2-assets/cta/kart-3.png";
+import food1 from "../Assets/mile2-assets/pictures/food-1.png";
+import food2 from "../Assets/mile2-assets/pictures/food-2.png";
+import food3 from "../Assets/mile2-assets/pictures/food-3.png";
 
 function Home() {
   return (
@@ -8,10 +21,7 @@ function Home() {
       <div className="home-container">
         <header className="home">
           <div className="homeContainer">
-            <img
-              src="../../Assets/mile1-assets/logo.svg"
-              alt="Teknolojik Yemekler"
-            />
+            <img src={logo} alt="Teknolojik Yemekler" />
             <p className="fırsat">fırsatı kaçırma</p>
             <div>
               <p>KOD ACIKTIRIR</p>
@@ -24,28 +34,27 @@ function Home() {
         </header>
         <nav className="nav-serit">
           <a href="/">
-            {" "}
-            <img src="../../Assets/mile2-aseets/icons/1.svg" alt="ikon1.svg" />
+            <img src={icon1} alt="ikon1.svg" />
             YENİ! Kore
           </a>
           <a href="/">
-            <img src="../../Assets/mile2-aseets/icons/2.svg" alt="ikon2.svg" />
+            <img src={icon2} alt="ikon2.svg" />
             Pizza
           </a>
           <a href="/">
-            <img src="../../Assets/mile2-aseets/icons/3.svg" alt="ikon3.svg" />
+            <img src={icon3} alt="ikon3.svg" />
             Burger
           </a>
           <a href="/">
-            <img src="../../Assets/mile2-aseets/icons/4.svg" alt="ikon4.svg" />
+            <img src={icon4} alt="ikon4.svg" />
             Kızartmalar
           </a>
           <a href="/">
-            <img src="../../Assets/mile2-aseets/icons/5.svg" alt="ikon5.svg" />
+            <img src={icon5} alt="ikon5.svg" />
             Fastfood
           </a>
           <a href="/">
-            <img src="../../Assets/mile2-aseets/icons/6.svg" alt="ikon6.svg" />
+            <img src={icon6} alt="ikon6.svg" />
             Gazlı İçecek
           </a>
         </nav>
@@ -53,10 +62,7 @@ function Home() {
           <div className="sectionlar">
             <section>
               <div className="lezzetus-container">
-                <img
-                  src="../../Assets/mile2-aseets/cta/kart-1.png"
-                  alt="kart1.png"
-                />
+                <img src={kart1} alt="kart1.png" />
                 <div className="ozel-lezzetus">
                   <h3>Özel Lezzetus</h3>
                   <p>Position:Absolute Acı Burger</p>
@@ -65,20 +71,14 @@ function Home() {
               </div>
               <div className="double-container">
                 <div className="hack-container">
-                  <img
-                    src="../../Assets/mile2-aseets/cta/kart-2.png"
-                    alt="kart2.png"
-                  />
+                  <img src={kart2} alt="kart2.png" />
                   <div className="hack-burger">
                     <h3>Hackathlon Burger Menü</h3>
                     <a href="/">SİPARİŞ VER</a>
                   </div>
                 </div>
                 <div className="cok-container">
-                  <img
-                    src="../../Assets/mile2-aseets/cta/kart-3.png"
-                    alt="kart3.png"
-                  />
+                  <img src={kart3} alt="kart3.png" />
                   <div className="cok-hızlı">
                     <h3>
                       {" "}
@@ -96,57 +96,33 @@ function Home() {
               </div>
               <nav className="nav-section">
                 <a href="/">
-                  {" "}
-                  <img
-                    src="../../Assets/mile2-aseets/icons/1.svg"
-                    alt="ikon1.svg"
-                  />
+                  <img src={icon1} alt="ikon1.svg" />
                   YENİ! Kore
                 </a>
                 <a href="/">
-                  <img
-                    src="../../Assets/mile2-aseets/icons/2.svg"
-                    alt="ikon2.svg"
-                  />
+                  <img src={icon2} alt="ikon2.svg" />
                   Pizza
                 </a>
                 <a href="/">
-                  <img
-                    src="../../Assets/mile2-aseets/icons/3.svg"
-                    alt="ikon3.svg"
-                  />
+                  <img src={icon3} alt="ikon3.svg" />
                   Burger
                 </a>
                 <a href="/">
-                  <img
-                    src="../../Assets/mile2-aseets/icons/4.svg"
-                    alt="ikon4.svg"
-                  />
+                  <img src={icon4} alt="ikon4.svg" />
                   Kızartmalar
                 </a>
                 <a href="/">
-                  <img
-                    src="../../Assets/mile2-aseets/icons/5.svg"
-                    alt="ikon5.svg"
-                  />
+                  <img src={icon5} alt="ikon5.svg" />
                   Fastfood
                 </a>
                 <a href="/">
-                  <img
-                    src="../../Assets/mile2-aseets/icons/6.svg"
-                    alt="ikon6.svg"
-                  />
+                  <img src={icon6} alt="ikon6.svg" />
                   Gazlı İçecek
                 </a>
               </nav>
               <div className="card-container">
                 <div className="home-card">
-                  <img
-                    alt="foot1-png"
-                    src="../../Assets/mile2-aseets/pictures/food-1.png"
-                    top
-                    width="100%"
-                  />
+                  <img alt="foot1-png" src={food1} width="100%" />
                   <div className="card-text">
                     <h5>Terminal Pizza</h5>
                     <div className="section-rakamlar">
@@ -157,12 +133,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="home-card">
-                  <img
-                    alt="foot2-png"
-                    src="../../Assets/mile2-aseets/pictures/food-2.png"
-                    top
-                    width="80%"
-                  />
+                  <img alt="foot2-png" src={food2} width="80%" />
                   <div className="card-text">
                     <h5>Position Absolute Acı Pizza</h5>
                     <div className="section-rakamlar">
@@ -173,10 +144,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="home-card">
-                  <img
-                    alt="foot3-png"
-                    src="../../Assets/mile2-aseets/pictures/food-3.png"
-                  />
+                  <img alt="foot3-png" src={food3} />
                   <div className="card-text">
                     <h5>useEffect Tavuklu Burger</h5>
                     <div className="section-rakamlar">
@@ -197,6 +165,3 @@ function Home() {
 }
 
 export default Home;
-
-/*
- */
